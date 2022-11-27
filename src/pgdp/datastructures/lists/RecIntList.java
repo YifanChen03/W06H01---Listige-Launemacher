@@ -131,6 +131,10 @@ public class RecIntList {
 
 	public void kinguinSort(boolean increasing) {
 		// TODO
+		//falls Liste leer
+		if (size() == 0) {
+			return;
+		}
 		RecIntListElement c = this.head;
 		kS_helper(increasing, c);
 	}
@@ -157,6 +161,7 @@ public class RecIntList {
 
 	public void reverse() {
 		// TODO
+
 	}
 
 	public static void zip(RecIntList l1, RecIntList l2) {
@@ -176,7 +181,8 @@ public class RecIntList {
 
 		// kinguinSort example (1)
 		RecIntList kinguinSortExample = new RecIntList();
-		int[] kinguinSortvalues = new int[] { 3, 2, 4, 7, 1, 6, 5, 9, 8 };
+		//int[] kinguinSortvalues = new int[] { 3, 2, 4, 7, 1, 6, 5, 9, 8};
+		int[] kinguinSortvalues = new int[] {};
 		for (int i : kinguinSortvalues) {
 			kinguinSortExample.append(i);
 		}
