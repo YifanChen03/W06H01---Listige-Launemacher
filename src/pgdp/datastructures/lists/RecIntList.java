@@ -111,7 +111,7 @@ public class RecIntList {
 		if (rile.getValue() == threshold) {
 			return rile.getValue();
 		} else {
-			return greater_threshold(threshold, rile.getNext());
+			return find_equal(threshold, rile.getNext());
 		}
 	}
 
@@ -154,14 +154,14 @@ public class RecIntList {
 
 	public static void main(String[] args) {
 		// countThresh example
-		/*int threshold = 3;
+		int threshold = 3;
 		RecIntList countThreshExample = new RecIntList();
-		for (int i = 1; i <= 2; i++) {
+		for (int i = 1; i <= 3; i++) {
 			countThreshExample.append(i);
 		}
 		System.out.println("Threshold: " + threshold);
 		System.out.println(countThreshExample);
-		System.out.println(Arrays.toString(countThreshExample.countThresh(threshold)));*/
+		System.out.println(Arrays.toString(countThreshExample.countThresh(threshold)));
 
 		// kinguinSort example (1)
 		/*RecIntList kinguinSortExample = new RecIntList();
