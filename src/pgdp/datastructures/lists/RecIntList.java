@@ -132,20 +132,27 @@ public class RecIntList {
 	public void kinguinSort(boolean increasing) {
 		// TODO
 		RecIntListElement c = this.head;
-		//Stoppbedingung falls Ende erreicht und somit c == null
-		if (c == null) {
+		kS_helper(increasing, c);
+	}
+
+	private void kS_helper(boolean increasing, RecIntListElement rile) {
+		//Stoppbedingung falls Ende erreicht und somit rile == null
+		if (rile == null) {
 			return;
 		}
 
 		if (increasing) {
-
+			if (rile.getNext() != null && rile.getValue() > rile.getNext().getValue()) {
+				rile.setNext(rile.getNext().getNext());
+				kS_helper(increasing, rile);
+			}
 		} else {
-
+			if (rile.getNext() != null && rile.getValue() < rile.getNext().getValue()) {
+				rile.setNext(rile.getNext().getNext());
+				kS_helper(increasing, rile);
+			}
 		}
-	}
-
-	private void kS_helper() {
-
+		kS_helper(increasing, rile.getNext());
 	}
 
 	public void reverse() {
@@ -165,10 +172,10 @@ public class RecIntList {
 		}
 		System.out.println("Threshold: " + threshold);
 		System.out.println(countThreshExample);
-		System.out.println(Arrays.toString(countThreshExample.countThresh(threshold)));/*
+		System.out.println(Arrays.toString(countThreshExample.countThresh(threshold)));*/
 
 		// kinguinSort example (1)
-		/*RecIntList kinguinSortExample = new RecIntList();
+		RecIntList kinguinSortExample = new RecIntList();
 		int[] kinguinSortvalues = new int[] { 3, 2, 4, 7, 1, 6, 5, 9, 8 };
 		for (int i : kinguinSortvalues) {
 			kinguinSortExample.append(i);
@@ -177,7 +184,7 @@ public class RecIntList {
 		System.out.println(kinguinSortExample);
 
 		// reverse example
-		RecIntList reverseExample = new RecIntList();
+		/*RecIntList reverseExample = new RecIntList();
 		for (int i = 1; i < 6; i++) {
 			reverseExample.append(i);
 		}
