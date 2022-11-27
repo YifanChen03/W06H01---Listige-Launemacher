@@ -70,10 +70,8 @@ public class RecIntList {
 		// TODO
 		long[] output;
 		long smaller = 0;
-		long equal = threshold;
 		long greater = 0;
 		RecIntListElement c = this.head;
-		RecIntList n_l = new RecIntList();
 
 		//berechnet Summe der Werte der Liste kleiner threshold
 		smaller = smaller_threshold(threshold, c);
@@ -82,16 +80,22 @@ public class RecIntList {
 		greater = greater_threshold(threshold, c);
 
 		//setze kleiner, equal und größer in array ein
-		output = new long[]{smaller, equal, greater};
+		output = new long[]{smaller, threshold, greater};
 		return output;
 	}
 
 	private long smaller_threshold(int threshold, RecIntListElement rile) {
-		//Stoppbedingung falls n >= threshold
-		if (rile.getValue() >= threshold) {
+		//Stoppbedingung falls n == null
+		if (rile == null) {
 			return 0;
 		}
-		return rile.getValue() + smaller_threshold(threshold, rile.getNext());
+
+		//falls kleiner threshold
+		if (rile.getValue() < threshold) {
+			return rile.getValue() + smaller_threshold(threshold, rile.getNext());
+		} else {
+			return smaller_threshold(threshold, rile.getNext());
+		}
 	}
 
 	private long greater_threshold(int threshold, RecIntListElement rile) {
