@@ -70,17 +70,21 @@ public class RecIntList {
 		// TODO
 		long[] output;
 		long smaller = 0;
+		long equal = 0;
 		long greater = 0;
 		RecIntListElement c = this.head;
 
 		//berechnet Summe der Werte der Liste kleiner threshold
 		smaller = smaller_threshold(threshold, c);
 
+		//sucht, ob threshold in der Liste vorhanden ist
+		equal =
+
 		//berechnet Summe der Werte der Liste größer threshold
 		greater = greater_threshold(threshold, c);
 
 		//setze kleiner, equal und größer in array ein
-		output = new long[]{smaller, threshold, greater};
+		output = new long[]{smaller, equal, greater};
 		return output;
 	}
 
@@ -95,6 +99,19 @@ public class RecIntList {
 			return rile.getValue() + smaller_threshold(threshold, rile.getNext());
 		} else {
 			return smaller_threshold(threshold, rile.getNext());
+		}
+	}
+
+	private long find_equal(int threshold, RecIntListElement rile) {
+		if (rile == null) {
+			return 0;
+		}
+
+		//falls gleich threshold
+		if (rile.getValue() == threshold) {
+			return rile.getValue();
+		} else {
+			return greater_threshold(threshold, rile.getNext());
 		}
 	}
 
@@ -114,6 +131,7 @@ public class RecIntList {
 
 	public void kinguinSort(boolean increasing) {
 		// TODO
+
 	}
 
 	public void reverse() {
@@ -126,14 +144,17 @@ public class RecIntList {
 
 	public static void main(String[] args) {
 		// countThresh example
+		/*int threshold = 3;
 		RecIntList countThreshExample = new RecIntList();
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 1; i <= 2; i++) {
 			countThreshExample.append(i);
 		}
-		System.out.println(Arrays.toString(countThreshExample.countThresh(3)));
+		System.out.println("Threshold: " + threshold);
+		System.out.println(countThreshExample);
+		System.out.println(Arrays.toString(countThreshExample.countThresh(threshold)));*/
 
 		// kinguinSort example (1)
-		RecIntList kinguinSortExample = new RecIntList();
+		/*RecIntList kinguinSortExample = new RecIntList();
 		int[] kinguinSortvalues = new int[] { 3, 2, 4, 7, 1, 6, 5, 9, 8 };
 		for (int i : kinguinSortvalues) {
 			kinguinSortExample.append(i);
@@ -159,6 +180,6 @@ public class RecIntList {
 		l1.append(7);
 		l1.append(8);
 		RecIntList.zip(l1, l2);
-		System.out.println(l1);
+		System.out.println(l1);*/
 	}
 }
