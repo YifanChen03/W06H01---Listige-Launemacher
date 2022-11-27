@@ -144,6 +144,10 @@ public class RecIntList {
 		}
 	}
 
+	private void kS_helper() {
+
+	}
+
 	public void reverse() {
 		// TODO
 	}
@@ -154,9 +158,9 @@ public class RecIntList {
 
 	public static void main(String[] args) {
 		// countThresh example
-		int threshold = 3;
+		int threshold = 0;
 		RecIntList countThreshExample = new RecIntList();
-		for (int i = 1; i <= 3; i++) {
+		for (int i = -32; i <= 6; i++) {
 			countThreshExample.append(i);
 		}
 		System.out.println("Threshold: " + threshold);
