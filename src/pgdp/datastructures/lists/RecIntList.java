@@ -68,7 +68,44 @@ public class RecIntList {
 
 	public long[] countThresh(int threshold) {
 		// TODO
-		return null;
+		long[] output;
+		long smaller = 0;
+		long equal = threshold;
+		long greater = 0;
+		RecIntListElement c = this.head;
+		RecIntList n_l = new RecIntList();
+
+		//berechnet Summe der Werte der Liste kleiner threshold
+		smaller = smaller_threshold(threshold, c);
+
+		//berechnet Summe der Werte der Liste größer threshold
+		greater = greater_threshold(threshold, c);
+
+		//setze kleiner, equal und größer in array ein
+		output = new long[]{smaller, equal, greater};
+		return output;
+	}
+
+	private long smaller_threshold(int threshold, RecIntListElement rile) {
+		//Stoppbedingung falls n >= threshold
+		if (rile.getValue() >= threshold) {
+			return 0;
+		}
+		return rile.getValue() + smaller_threshold(threshold, rile.getNext());
+	}
+
+	private long greater_threshold(int threshold, RecIntListElement rile) {
+		//Stoppbedingung falls n == null
+		if (rile == null) {
+			return 0;
+		}
+
+		//falls größer threshold
+		if (rile.getValue() > threshold) {
+			return rile.getValue() + greater_threshold(threshold, rile.getNext());
+		} else {
+			return greater_threshold(threshold, rile.getNext());
+		}
 	}
 
 	public void kinguinSort(boolean increasing) {

@@ -94,4 +94,30 @@ public class RecIntListElement {
 		} while (tmp != null);
 		return sb.toString();
 	}
+
+	//Getter und Setter#
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public RecIntListElement getNext() {
+		return next;
+	}
+
+	public void setNext(RecIntListElement next) {
+		this.next = next;
+	}
+
+	public RecIntListElement getPrev() {
+		return prev;
+	}
+
+	public void setPrev(RecIntListElement prev) {
+		this.prev = prev;
+	}
 }
