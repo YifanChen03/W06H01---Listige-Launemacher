@@ -131,7 +131,17 @@ public class RecIntList {
 
 	public void kinguinSort(boolean increasing) {
 		// TODO
+		RecIntListElement c = this.head;
+		//Stoppbedingung falls Ende erreicht und somit c == null
+		if (c == null) {
+			return;
+		}
 
+		if (increasing) {
+
+		} else {
+
+		}
 	}
 
 	public void reverse() {
