@@ -78,7 +78,7 @@ public class RecIntList {
 		smaller = smaller_threshold(threshold, c);
 
 		//sucht, ob threshold in der Liste vorhanden ist
-		equal =
+		equal = find_equal(threshold, c);
 
 		//berechnet Summe der Werte der Liste größer threshold
 		greater = greater_threshold(threshold, c);
