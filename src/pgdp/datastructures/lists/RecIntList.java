@@ -147,12 +147,25 @@ public class RecIntList {
 
 		if (increasing) {
 			if (rile.getNext() != null && rile.getValue() > rile.getNext().getValue()) {
-				rile.setNext(rile.getNext().getNext());
+				if (rile.getNext().getNext() == null) {
+					rile.setNext(null);
+				} else {
+					RecIntListElement tel = rile.getNext().getNext();
+					rile.setNext(tel);
+					tel.setPrev(rile);
+				}
 				kS_helper(increasing, rile);
 			}
 		} else {
 			if (rile.getNext() != null && rile.getValue() < rile.getNext().getValue()) {
-				rile.setNext(rile.getNext().getNext());
+				//falls vorletztes Element
+				if (rile.getNext().getNext() == null) {
+					rile.setNext(null);
+				} else {
+					RecIntListElement tel = rile.getNext().getNext();
+					rile.setNext(tel);
+					tel.setPrev(rile);
+				}
 				kS_helper(increasing, rile);
 			}
 		}
@@ -180,14 +193,14 @@ public class RecIntList {
 		System.out.println(Arrays.toString(countThreshExample.countThresh(threshold)));*/
 
 		// kinguinSort example (1)
-		RecIntList kinguinSortExample = new RecIntList();
-		//int[] kinguinSortvalues = new int[] { 3, 2, 4, 7, 1, 6, 5, 9, 8};
-		int[] kinguinSortvalues = new int[] {};
+		/*RecIntList kinguinSortExample = new RecIntList();
+		int[] kinguinSortvalues = new int[] {3,2,4,7,1,6,5,9,8};
+		//int[] kinguinSortvalues = new int[] {};
 		for (int i : kinguinSortvalues) {
 			kinguinSortExample.append(i);
 		}
-		kinguinSortExample.kinguinSort(true); // false for example (2)
-		System.out.println(kinguinSortExample);
+		kinguinSortExample.kinguinSort(false); // false for example (2)
+		System.out.println(kinguinSortExample);*/
 
 		// reverse example
 		/*RecIntList reverseExample = new RecIntList();
@@ -195,10 +208,10 @@ public class RecIntList {
 			reverseExample.append(i);
 		}
 		reverseExample.reverse();
-		System.out.println(reverseExample);
+		System.out.println(reverseExample);*/
 
 		// zip example
-		RecIntList l1 = new RecIntList();
+		/*RecIntList l1 = new RecIntList();
 		RecIntList l2 = new RecIntList();
 		for (int i = 1; i <= 5; i += 2) {
 			l1.append(i);
