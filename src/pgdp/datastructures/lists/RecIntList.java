@@ -202,9 +202,9 @@ public class RecIntList {
 	public static void zip(RecIntList l1, RecIntList l2) {
 		// TODO
 		//falls zweite Liste leer
-		if ((l1.size() == 0) && (l2.size() != 0)) {
+		if (l1.size() == 0 && l2.size() != 0) {
 			l1.head = l2.head;
-		} else if (l2.size() != 0 || l2 != null) {
+		} else if (l2.size() != 0) {
 			z_helper(l1.head, null, l2.head, null);
 		}
 	}
