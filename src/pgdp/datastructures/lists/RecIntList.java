@@ -132,7 +132,7 @@ public class RecIntList {
 	public void kinguinSort(boolean increasing) {
 		// TODO
 		//falls Liste leer
-		if (size() == 0) {
+		if (size() == 0 || this == null) {
 			return;
 		}
 		RecIntListElement c = this.head;
@@ -174,11 +174,34 @@ public class RecIntList {
 
 	public void reverse() {
 		// TODO
+		//catche leere listen und listen null
+		if (size() == 0 || this == null) {
+			return;
+		}
+		r_helper(head);
+	}
 
+	public void r_helper(RecIntListElement c) {
+		RecIntListElement tel;
+		//Stoppbedingung wenn c == null da letztes Element
+		if (c == null) {
+			return;
+		}
+
+		//speicher zu ersetzendes Listenelement
+		tel = c.getNext();
+		c.setNext(c.getPrev());
+		c.setPrev(tel);
+
+		//verschiebe head
+		head = c;
+
+		r_helper(tel);
 	}
 
 	public static void zip(RecIntList l1, RecIntList l2) {
 		// TODO
+
 	}
 
 	public static void main(String[] args) {
@@ -203,12 +226,12 @@ public class RecIntList {
 		System.out.println(kinguinSortExample);*/
 
 		// reverse example
-		/*RecIntList reverseExample = new RecIntList();
+		RecIntList reverseExample = new RecIntList();
 		for (int i = 1; i < 6; i++) {
 			reverseExample.append(i);
 		}
 		reverseExample.reverse();
-		System.out.println(reverseExample);*/
+		System.out.println(reverseExample);
 
 		// zip example
 		/*RecIntList l1 = new RecIntList();
