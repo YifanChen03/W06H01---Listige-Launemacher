@@ -201,7 +201,42 @@ public class RecIntList {
 
 	public static void zip(RecIntList l1, RecIntList l2) {
 		// TODO
+		//falls zweite Liste leer
+		if ((l1.size() == 0 || l1 == null) && (l2.size() != 0 || l2 != null)) {
+			l1.head = l2.head;
+		} else if ((l2.size() != 0 || l2 != null)) {
+			z_helper(l1.head, null, l2.head, null);
+		}
+	}
 
+	public static void z_helper(RecIntListElement le1, RecIntListElement p_le1,
+								RecIntListElement le2, RecIntListElement p_le2) {
+		//Stoppbedingung wenn le1 und le2 null erreicht haben
+		if (le1 == null && le2 == null) {
+			return;
+		}
+		if (le1 == null) {
+			p_le2.setNext(le2);
+			le2.setPrev(p_le2);
+			return;
+		}
+		if (le2 == null) {
+			le1.setPrev(p_le2);
+			return;
+		}
+
+		RecIntListElement tle1 = le1.getNext();
+		RecIntListElement tle2 = le2.getNext();
+		le1.setPrev(p_le2);
+		le1.setNext(le2);
+		le2.setPrev(le1);
+		le2.setNext(tle1);
+		p_le1 = le1;
+		p_le2 = le2;
+		le1 = tle1;
+		le2 = tle2;
+
+		z_helper(le1, p_le1, le2, p_le2);
 	}
 
 	public static void main(String[] args) {
@@ -226,15 +261,15 @@ public class RecIntList {
 		System.out.println(kinguinSortExample);*/
 
 		// reverse example
-		RecIntList reverseExample = new RecIntList();
+		/*RecIntList reverseExample = new RecIntList();
 		for (int i = 1; i < 6; i++) {
 			reverseExample.append(i);
 		}
 		reverseExample.reverse();
-		System.out.println(reverseExample);
+		System.out.println(reverseExample);*/
 
 		// zip example
-		/*RecIntList l1 = new RecIntList();
+		RecIntList l1 = new RecIntList();
 		RecIntList l2 = new RecIntList();
 		for (int i = 1; i <= 5; i += 2) {
 			l1.append(i);
@@ -242,7 +277,9 @@ public class RecIntList {
 		}
 		l1.append(7);
 		l1.append(8);
+		System.out.println("l1: " + l1);
+		System.out.println("l2: " + l2);
 		RecIntList.zip(l1, l2);
-		System.out.println(l1);*/
+		System.out.println(l1);
 	}
 }
